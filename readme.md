@@ -7,8 +7,8 @@
 <!-- TOC -->
 
 ## Cellphone user
-![Summary board](Dataset-Visualization/Cellphone_powerbi.JPG)
+![Summary board](DatasetVisualization/Cellphone_powerbi.JPG)
 ## Covid
-![Summary board](Dataset-Visualization/2.jpg)
+![Summary board](DatasetVisualization/2.jpg)
 ## Helsinki
 
