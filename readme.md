@@ -1,4 +1,4 @@
-# Data Visualization
+# Data Visualization by Power BI
 ## Dataset
 <!-- TOC -->
 - [Cellphone](#Cellphone)  
@@ -9,6 +9,5 @@
 ## Cellphone user
 ![Summary board](DatasetVisualization/Cellphone_powerbi.JPG)
 ## Covid
-![Summary board](DatasetVisualization/2.jpg)
 ## Helsinki
 
