@@ -6,8 +6,8 @@
 - [Helsinki](#Helsinki)  
 <!-- TOC -->
 
-## Cellphone user
-![Summary board](DatasetVisualization/Cellphone_powerbi.JPG)
+## Cellphone Rating
+![Summary board](DatasetVisualization/CellphoneVis.JPG)
 ## Covid
 ## Helsinki
 
