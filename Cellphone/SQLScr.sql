@@ -36,56 +36,52 @@ using(cellphone_id)
 group by Brand
 
 
+#Average Rating
+select brand,model,round(avg(b.rating)) as `Average Rating` from cellphones_data 
+inner join cellphones_ratings b 
+using(cellphone_id)
+group by model
+order by `Average Rating` desc
 
 
 #Mode model  between brands,price range and models
-with sub as(select brand,model, b.cellphone_id,count(b.cellphone_id) as mode,price,
+with sub as(select brand,model,round(avg(b.rating),2) as `Average Rating`,price,
 case 
 	when 0<price and price<500 then '<500'
 	when 500<=price and price<=1000 then '500-1000'
 	when 1000<price then 'Over 1000'
 end as `Range`
 from cellphones_data a 
-inner join cellphones_users b
+inner join cellphones_ratings b
 using(cellphone_id)	
 group by model)
 
-select* from (select row_number() over(partition by sub.`Range`,sub.brand order by sub.mode desc ) as Ranking, 
-				sub.brand,sub.model,sub.mode,price,sub.`Range` from sub) as subb
+select* from (select row_number() over(partition by sub.`Range`order by sub.`Average Rating` desc ) as Ranking, 
+				sub.brand,sub.model,sub.`Average Rating`,price,sub.`Range` from sub) as subb
 
 
 #Mode model  between price range and models	with genders
-with sub as(select brand,model, b.cellphone_id,count(b.cellphone_id) as mode,price, 
-			count(b.gender) as `Number of Male Users`,
+with sub as(select brand,model,round(avg(b.rating),2) as `Average Rating`,price, 
+			`internal memory`,RAM,`battery size`,`main camera`,
+			`selfie camera`,`screen size`,weight,performance, 
 			case 
 				when 0<price and price<500 then '<500'
 				when 500<=price and price<=1000 then '500-1000'
 				when 1000<price then 'Over 1000'
 			end as `Range`
 from cellphones_data a 
-inner join cellphones_users b
+inner join cellphones_ratings b
 using(cellphone_id)	
-where gender='Male'
 group by model)
 
-select* from (select row_number() over(partition by sub.`Range` order by sub.mode desc ) as Ranking, 
-				sub.brand,sub.model,sub.mode,price,sub.`Number of Male Users`,`Range` 
-				from sub) as subb			
+select* from (select row_number() over(partition by sub.`Range` order by sub.`Average Rating` desc ) as Ranking,`Range`,  
+				sub.brand,sub.model,sub.`Average Rating`,price,performance,`internal memory`,RAM,`battery size`,`main camera`,
+		`selfie camera`,`screen size`,weight 
+				from sub) as subb
+
 where Ranking in (1,2,3)
 				
-							
-
-#Revenue by brands from participants
-with sub as (select brand,model,cellphone_id,count((b.cellphone_id)) as Quantity from cellphones_users 
-inner join cellphones_data b 
-using(cellphone_id)
-group by model)
-
-select c.Brand,sum(sub.Quantity*price) as Revenue from cellphones_data c
-inner join sub
-using (cellphone_id)
-group by brand
-order by Revenue desc
+			
 
 
 
