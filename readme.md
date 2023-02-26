@@ -1,13 +1,15 @@
 # Data Visualization by Power BI
 ## Dataset
 <!-- TOC -->
-- [Cellphone](#Cellphone)  
-- [COVID](#Covid)  
-- [Helsinki](#Helsinki)  
+- [Cellphone](#cellphone-rating)  
+- [Heart Attack Possibility](#heart-attack-possibility)   
 <!-- TOC -->
 
 ## Cellphone Rating
 ![Summary board](DatasetVisualization/CellphoneVis.JPG)
-## Covid
-## Helsinki
+## Heart Attack Possibility
+![Summary board](DatasetVisualization/HA.JPG)
+![Summary board](DatasetVisualization/HA1.JPG)
+![Summary board](DatasetVisualization/HA2.JPG)
+
 
